@@ -1,6 +1,6 @@
 %define		realname	libvorbis
 Summary:	The Vorbis General Audio Compression Codec - Mingw32 cross version
-Summary(pl):	Kodek kompresji audio - Vorbis - wersja skro∂na dla Mingw32
+Summary(pl.UTF-8):   Kodek kompresji audio - Vorbis - wersja skro≈õna dla Mingw32
 Name:		crossmingw32-%{realname}
 Version:	1.1.2
 Release:	1
@@ -39,20 +39,20 @@ Ogg Vorbis is a fully open, non-proprietary, patent-and-royalty-free,
 general-purpose compressed audio format for audio and music at fixed
 and variable bitrates from 16 to 128 kbps/channel.
 
-%description -l pl
-Ogg Vorbis jest ca≥kowicie otwartym, nie bÍd±cym niczyj± w≥asno∂ci±,
-wolnym od patentÛw, ogÛlnego przeznaczenia kodekiem audio i muzyki o
-sta≥ej i zmiennej bitrate od 16 do 128 kbps/kana≥.
+%description -l pl.UTF-8
+Ogg Vorbis jest ca≈Çkowicie otwartym, nie bƒôdƒÖcym niczyjƒÖ w≈Çasno≈õciƒÖ,
+wolnym od patent√≥w, og√≥lnego przeznaczenia kodekiem audio i muzyki o
+sta≈Çej i zmiennej bitrate od 16 do 128 kbps/kana≈Ç.
 
 %package dll
 Summary:	%{realname} - DLL library for Windows
-Summary(pl):	%{realname} - biblioteka DLL dla Windows
+Summary(pl.UTF-8):   %{realname} - biblioteka DLL dla Windows
 Group:		Applications/Emulators
 
 %description dll
 %{realname} - DLL library for Windows.
 
-%description dll -l pl
+%description dll -l pl.UTF-8
 %{realname} - biblioteka DLL dla Windows.
 
 %prep
