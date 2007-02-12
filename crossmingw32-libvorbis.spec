@@ -1,6 +1,6 @@
 %define		realname	libvorbis
 Summary:	The Vorbis General Audio Compression Codec - Mingw32 cross version
-Summary(pl.UTF-8):   Kodek kompresji audio - Vorbis - wersja skrośna dla Mingw32
+Summary(pl.UTF-8):	Kodek kompresji audio - Vorbis - wersja skrośna dla Mingw32
 Name:		crossmingw32-%{realname}
 Version:	1.1.2
 Release:	1
@@ -46,7 +46,7 @@ stałej i zmiennej bitrate od 16 do 128 kbps/kanał.
 
 %package dll
 Summary:	%{realname} - DLL library for Windows
-Summary(pl.UTF-8):   %{realname} - biblioteka DLL dla Windows
+Summary(pl.UTF-8):	%{realname} - biblioteka DLL dla Windows
 Group:		Applications/Emulators
 
 %description dll
