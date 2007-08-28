@@ -15,7 +15,7 @@ URL:		http://www.vorbis.com/
 BuildRequires:	crossmingw32-gcc
 BuildRequires:	crossmingw32-libogg
 BuildRequires:	crossmingw32-w32api
-BuildRequires:	pkgconfig
+BuildRequires:	pkgconfig >= 1:0.15
 Requires:	crossmingw32-libogg
 Requires:	crossmingw32-runtime
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -24,7 +24,6 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		target			i386-mingw32
 %define		target_platform		%{target}
-%define		arch			%{_prefix}/%{target}
 
 %define		_sysprefix		/usr
 %define		_prefix			%{_sysprefix}/%{target}
@@ -83,7 +82,7 @@ Biblioteka DLL libvorbis dla Windows.
 %patch2 -p1
 
 %build
-export PKG_CONFIG_PATH=%{_prefix}/lib/pkgconfig
+export PKG_CONFIG_LIBDIR=%{_prefix}/lib/pkgconfig
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
