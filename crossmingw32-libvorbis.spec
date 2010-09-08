@@ -2,21 +2,20 @@
 Summary:	The Vorbis General Audio Compression Codec - Mingw32 cross version
 Summary(pl.UTF-8):	Kodek kompresji audio - Vorbis - wersja skrośna dla Mingw32
 Name:		crossmingw32-%{realname}
-Version:	1.2.0
+Version:	1.3.1
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://downloads.xiph.org/releases/vorbis/%{realname}-%{version}.tar.bz2
-# Source0-md5:	7c6e409d7aa1fa8a5481dea571d5bde0
+# Source0-md5:	90b1eb86e6d57694ffdfc2e4d8c7a64e
 Patch0:		%{realname}-ac_fixes.patch
 Patch1:		%{realname}-make.patch
-Patch2:		%{name}-libtool.patch
 URL:		http://www.vorbis.com/
-BuildRequires:	crossmingw32-gcc
-BuildRequires:	crossmingw32-libogg
+BuildRequires:	crossmingw32-gcc >= 3.0
+BuildRequires:	crossmingw32-libogg >= 1.0
 BuildRequires:	crossmingw32-w32api
 BuildRequires:	pkgconfig >= 1:0.15
-Requires:	crossmingw32-libogg
+Requires:	crossmingw32-libogg >= 1.0
 Requires:	crossmingw32-runtime
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -33,9 +32,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		__cc			%{target}-gcc
 %define		__cxx			%{target}-g++
 
-%ifarch alpha sparc sparc64 sparcv9
+%ifnarch %{ix86}
+# arch-specific flags (like alpha's -mieee) are not valid for i386 gcc
 %define		optflags	-O2
 %endif
+# -z options are invalid for mingw linker
+%define		filterout_ld	-Wl,-z,.*
 
 %description
 Ogg Vorbis is a fully open, non-proprietary, patent-and-royalty-free,
@@ -67,7 +69,7 @@ Statyczna biblioteka libvorbis (wersja skrośna mingw32).
 Summary:	DLL libvorbis library for Windows
 Summary(pl.UTF-8):	Biblioteka DLL libvorbis dla Windows
 Group:		Applications/Emulators
-Requires:	crossmingw32-libogg-dll
+Requires:	crossmingw32-libogg-dll >= 1.0
 Requires:	wine
 
 %description dll
@@ -80,12 +82,11 @@ Biblioteka DLL libvorbis dla Windows.
 %setup -q -n %{realname}-%{version}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 export PKG_CONFIG_LIBDIR=%{_prefix}/lib/pkgconfig
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
@@ -110,7 +111,7 @@ mv -f $RPM_BUILD_ROOT%{_prefix}/bin/*.dll $RPM_BUILD_ROOT%{_dlldir}
 %{target}-strip -g -R.comment -R.note $RPM_BUILD_ROOT%{_libdir}/*.a
 %endif
 
-rm -rf $RPM_BUILD_ROOT%{_datadir}/{aclocal,doc}
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/{aclocal,doc}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
