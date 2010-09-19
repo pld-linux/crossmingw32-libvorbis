@@ -1,6 +1,6 @@
 %define		realname	libvorbis
-Summary:	The Vorbis General Audio Compression Codec - Mingw32 cross version
-Summary(pl.UTF-8):	Kodek kompresji audio - Vorbis - wersja skrośna dla Mingw32
+Summary:	The Vorbis General Audio Compression Codec - MinGW32 cross version
+Summary(pl.UTF-8):	Kodek kompresji audio - Vorbis - wersja skrośna dla MinGW32
 Name:		crossmingw32-%{realname}
 Version:	1.3.1
 Release:	1
@@ -54,16 +54,16 @@ stałej i zmiennej bitrate od 16 do 128 kbps/kanał.
 Ten pakiet zawiera wersję skrośną dla Win32.
 
 %package static
-Summary:	Static libvorbis library (cross mingw32 version)
-Summary(pl.UTF-8):	Statyczna biblioteka libvorbis (wersja skrośna mingw32)
+Summary:	Static libvorbis library (cross MinGW32 version)
+Summary(pl.UTF-8):	Statyczna biblioteka libvorbis (wersja skrośna MinGW32)
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description static
-Static libvorbis library (cross mingw32 version).
+Static libvorbis library (cross MinGW32 version).
 
 %description static -l pl.UTF-8
-Statyczna biblioteka libvorbis (wersja skrośna mingw32).
+Statyczna biblioteka libvorbis (wersja skrośna MinGW32).
 
 %package dll
 Summary:	DLL libvorbis library for Windows
