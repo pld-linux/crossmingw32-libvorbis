@@ -2,19 +2,24 @@
 Summary:	The Vorbis General Audio Compression Codec - MinGW32 cross version
 Summary(pl.UTF-8):	Kodek kompresji audio - Vorbis - wersja skrośna dla MinGW32
 Name:		crossmingw32-%{realname}
-Version:	1.3.1
+Version:	1.3.2
 Release:	1
 License:	BSD
 Group:		Libraries
-Source0:	http://downloads.xiph.org/releases/vorbis/%{realname}-%{version}.tar.bz2
-# Source0-md5:	90b1eb86e6d57694ffdfc2e4d8c7a64e
+Source0:	http://downloads.xiph.org/releases/vorbis/%{realname}-%{version}.tar.xz
+# Source0-md5:	3067484a544115257beec616a696c5b3
 Patch0:		%{realname}-ac_fixes.patch
 Patch1:		%{realname}-make.patch
 URL:		http://www.vorbis.com/
+BuildRequires:	autoconf >= 2.50
+BuildRequires:	automake >= 1:1.6
 BuildRequires:	crossmingw32-gcc >= 3.0
 BuildRequires:	crossmingw32-libogg >= 1.0
 BuildRequires:	crossmingw32-w32api
+BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.15
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 Requires:	crossmingw32-libogg >= 1.0
 Requires:	crossmingw32-runtime
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
