@@ -87,6 +87,7 @@ Biblioteka DLL libvorbis dla Windows.
 %setup -q -n %{realname}-%{version}
 %patch0 -p1
 %patch1 -p1
+%{__sed} -i 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/g' configure.ac
 
 %build
 export PKG_CONFIG_LIBDIR=%{_prefix}/lib/pkgconfig
