@@ -5,7 +5,7 @@ Name:		crossmingw32-%{realname}
 Version:	1.3.3
 Release:	1
 License:	BSD
-Group:		Libraries
+Group:		Development/Libraries
 Source0:	http://downloads.xiph.org/releases/vorbis/%{realname}-%{version}.tar.xz
 # Source0-md5:	71b649d3e08e63ece16649df906ce8b9
 Patch0:		%{realname}-ac_fixes.patch
@@ -18,6 +18,7 @@ BuildRequires:	crossmingw32-libogg >= 1.0
 BuildRequires:	crossmingw32-w32api
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.15
+BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	crossmingw32-libogg >= 1.0
@@ -41,8 +42,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 # arch-specific flags (like alpha's -mieee) are not valid for i386 gcc
 %define		optflags	-O2
 %endif
-# -z options are invalid for mingw linker
+# -z options are invalid for mingw linker, most of -f options are Linux-specific
 %define		filterout_ld	-Wl,-z,.*
+%define		filterout_c	-f[-a-z0-9=]*
 
 %description
 Ogg Vorbis is a fully open, non-proprietary, patent-and-royalty-free,
