@@ -2,15 +2,14 @@
 Summary:	The Vorbis General Audio Compression Codec - MinGW32 cross version
 Summary(pl.UTF-8):	Kodek kompresji audio - Vorbis - wersja skrośna dla MinGW32
 Name:		crossmingw32-%{realname}
-Version:	1.3.5
-Release:	2
+Version:	1.3.6
+Release:	1
 License:	BSD
 Group:		Development/Libraries
-Source0:	http://downloads.xiph.org/releases/vorbis/%{realname}-%{version}.tar.xz
-# Source0-md5:	28cb28097c07a735d6af56e598e1c90f
-Patch0:		%{realname}-ac_fixes.patch
-Patch1:		%{realname}-make.patch
-URL:		http://www.vorbis.com/
+Source0:	https://downloads.xiph.org/releases/vorbis/%{realname}-%{version}.tar.xz
+# Source0-md5:	b7d1692f275c73e7833ed1cc2697cd65
+Patch0:		%{realname}-make.patch
+URL:		https://xiph.org/vorbis/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.6
 BuildRequires:	crossmingw32-gcc >= 3.0
@@ -88,7 +87,6 @@ Biblioteka DLL libvorbis dla Windows.
 %prep
 %setup -q -n %{realname}-%{version}
 %patch0 -p1
-%patch1 -p1
 
 %build
 export PKG_CONFIG_LIBDIR=%{_prefix}/lib/pkgconfig
@@ -100,7 +98,8 @@ export PKG_CONFIG_LIBDIR=%{_prefix}/lib/pkgconfig
 %configure \
 	OBJDUMP=%{target}-objdump \
 	--host=%{target} \
-	--target=%{target}
+	--target=%{target} \
+	--disable-silent-rules
 
 %{__make}
 
@@ -125,7 +124,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS CHANGES COPYING README
+%doc AUTHORS CHANGES COPYING
 %{_libdir}/libvorbis.dll.a
 %{_libdir}/libvorbisenc.dll.a
 %{_libdir}/libvorbisfile.dll.a
